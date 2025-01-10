@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { UserInfoType } from './types'
+import type { UserInfoType } from '../../type/types'
 import { tuanApis } from '@/services'
-import { useGroupStore } from './group'
-import { useRoleStore } from './role'
+import { useGroupStore } from '../../chat/room/group'
+import { useRoleStore } from '../role/role'
 import { axiosIns } from '@/services'
 import wsIns from '@/utils/websocket/websocket'
 

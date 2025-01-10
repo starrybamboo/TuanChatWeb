@@ -2,7 +2,7 @@
 import { watch, onMounted } from 'vue'
 import { MemberList, MessageList, InputBox } from '@/components'
 import { ElContainer, ElMain, ElAside } from 'element-plus'
-import { useRoomStore } from '@/stores'
+import { useRoomStore } from '@/store'
 import { useRoute } from 'vue-router'
 
 const roomStore = useRoomStore()

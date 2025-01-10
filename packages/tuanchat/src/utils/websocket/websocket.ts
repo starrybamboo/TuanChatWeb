@@ -1,8 +1,8 @@
-import { useUserStore, useMsgStore } from '@/stores'
+import { useUserStore, useMsgStore } from '@/store'
 import { WsRespEnum } from '@/enums'
 import type { WsReqType } from './types'
-import type { MsgType } from '@/stores/types'
-import pinia from '@/stores'
+import type { MsgType } from '@/store/types'
+import pinia from '@/store'
 
 const worker: Worker = new Worker(new URL('./worker.ts', import.meta.url), {
   type: 'module'

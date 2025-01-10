@@ -14,6 +14,7 @@ export const useRoleStore = defineStore('role', () => {
   const imageUrls = ref(
     new Map<number, { spriteUrl: string; avatarUrl: string; avatarTitle: string }>()
   )
+
   // 一个群里面的相关所有角色
   // room_id -> role_id 
   const groupToRole = ref(new Map<number, UserRole>())
@@ -53,6 +54,7 @@ export const useRoleStore = defineStore('role', () => {
   }
 
   async function fetchRole(groupId: number) {
+    
     groupToRole.value.set(groupId, userRoleList.value.values().next().value!)
   }
 

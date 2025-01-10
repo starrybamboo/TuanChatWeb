@@ -24,7 +24,6 @@ export const useRoleColorStore = defineStore('roleColor', {
   actions: {
     // 获取或分配角色的颜色
     getColorForRole(roleId: number) {
-
       // 如果 roleId 没有对应的color
       if (!this.roleColors.has(roleId)) {
         // 确保每个角色都有独特的显示颜色， 优先使用未被分配的颜色

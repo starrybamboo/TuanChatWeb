@@ -2,7 +2,7 @@
 import { ElButton, ElSelect, ElOption, ElInput, ElAvatar } from 'element-plus'
 import { ref } from 'vue'
 import { Promotion } from '@element-plus/icons-vue'
-import { useMsgStore, useRoomStore, useRoleStore } from '@/stores'
+import { useMsgStore, useRoomStore, useRoleStore } from '@/store'
 
 const message = ref('')
 const msgStore = useMsgStore()

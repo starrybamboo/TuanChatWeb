@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeLayout from '../layout/HomeLayout.vue'
 import { ContentRouter } from './ContentRouter'
-import { useUserStore } from '@/stores/user'
-import pinia from '@/stores'
+import { useUserStore } from '@/store/character/user/user'
+import pinia from '@/store'
 
 const userStore = useUserStore(pinia)
 

@@ -2,7 +2,7 @@
 import { ElScrollbar } from 'element-plus'
 import MessageItem from './MessageItem.vue'
 import { ref, nextTick, watch } from 'vue'
-import { useRoomStore, useMsgStore } from '@/stores'
+import { useRoomStore, useMsgStore } from '@/store'
 import type { Message } from '@/services/tuanchat/apis'
 
 const roomStore = useRoomStore()

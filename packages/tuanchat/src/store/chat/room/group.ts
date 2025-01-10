@@ -3,8 +3,10 @@ import { defineStore } from 'pinia'
 import { tuanApis } from '@/services'
 import type { RoomGroup, UserRole } from '@/services'
 import { Renderer } from '@/utils/renderer'
+import { useRoleStore } from '../../character/role/role'
 
 export const useGroupStore = defineStore('group', () => {
+  const roleStore = useRoleStore();
 
   // 群组列表: groupId -> 群组信息
   const groupList = ref<Map<number, RoomGroup>>(new Map())

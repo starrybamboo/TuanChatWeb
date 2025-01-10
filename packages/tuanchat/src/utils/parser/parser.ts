@@ -1,8 +1,8 @@
 import { InstructionEnum } from '@/enums'
 import { rollDice, rollAttr } from '../dice'
 import { tuanApis, type RoleAbilityTable } from '@/services'
-import pinia from '@/stores'
-import { useRoomStore } from '@/stores'
+import pinia from '@/store'
+import { useRoomStore } from '@/store'
 import { chineseToPropertyMap } from '@/enums'
 
 export function parseInstruction(instruction: string): string {

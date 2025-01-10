@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useMsgStore } from './message'
-import { useGroupStore } from './group'
-import { useRoleStore } from './role'
+import { useGroupStore } from './chat/room/group'
+import { useRoleStore } from './role/role'
 import type { Message, UserRole, RoomGroup } from '@/services'
 import { Renderer } from '@/utils/renderer'
 
@@ -26,39 +26,54 @@ export const useRoomStore = defineStore('room', () => {
 
   // 切换到指定房间
   async function switchRoom(roomId: number) {
+    
     curRoom.value = groupStore.groupList.get(roomId)
+
+    // 如果没有缓存过
     if (!cachedRoomList.value.has(roomId)) {
       await initRoom(roomId)
       //TODO：兼容私聊信息
+      
+      // 缓存相关信息
       cachedRoomList.value.set(roomId, true)
     } else {
       await loadRoom(roomId)
     }
     
-    if (curRoom.value) {
-      await groupStore.fetchRoles(roomId).then(() => {
-        roleList.value = groupStore.groupRoleList.get(roomId)!
-        roleList.value.forEach((role) => {
-          roleStore.fetchRoleAvatars(role.roleId!).then(() => {})
-        })
-      })
-    }
+    // 如果当前房间不为空，那么获取相关角色
+    // if (curRoom.value) {
+    //   await groupStore.fetchRoles(roomId).then(() => {
+    //     roleList.value = groupStore.groupRoleList.get(roomId)!
+    //     roleList.value.forEach((role) => {
+    //       roleStore.fetchRoleAvatars(role.roleId!).then(() => {})
+    //     })
+    //   })
+    // }
   }
 
   // 初始化房间数据
   async function initRoom(roomId: number) {
+    
+    // 创建这个房间相关的 webgal 渲染器
     groupStore.createRenderer(roomId).then(() => {
       renderer.value = groupStore.renderers.get(roomId)!
     })
+
+    // 获取历史消息
     msgStore.fetchMsg(roomId).then(() => {
       messages.value = msgStore.messagesList.get(roomId)!
     })
+
+    //获取相关的角色
     groupStore.fetchRoles(roomId).then(() => {
       roleList.value = groupStore.groupRoleList.get(roomId)!
       roleList.value.forEach((role) => {
         roleStore.fetchRoleAvatars(role.roleId!).then(() => {})
       })
+      
     })
+
+    // 获取角色
     roleStore.fetchRole(roomId).then(() => {
       role.value = roleStore.groupToRole.get(roomId)!
     })

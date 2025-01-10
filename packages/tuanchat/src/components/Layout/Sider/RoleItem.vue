@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ElMenuItem, ElAvatar } from 'element-plus'
-import { useRoleStore } from '@/stores'
+import { useRoleStore } from '@/store'
 import router from '@/router'
 
 const props = defineProps<{

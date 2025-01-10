@@ -4,7 +4,7 @@ import 'vue-cropper/dist/index.css'
 import { VueCropper } from 'vue-cropper'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useRoleStore } from '@/stores'
+import { useRoleStore } from '@/store'
 import { tuanApis } from '@/services'
 import { Plus, ZoomIn, Delete, Crop, Open } from '@element-plus/icons-vue'
 import { ElButton, ElDialog, ElIcon, ElInput, ElScrollbar, ElUpload } from 'element-plus'
@@ -103,7 +103,7 @@ const onBeforeUpload = async (rawFile: UploadRawFile) => {
   // 收到用户的消息
   await roleStore.fetchRoleAvatars(role?.roleId!).then(() => {
     fileList.value = []
-    
+
     roleStore.roleToImages.get(role?.roleId!)?.forEach((avatarId: number) => {
       const urls = roleStore.imageUrls.get(avatarId)
       fileList.value.push({
@@ -253,7 +253,7 @@ const deleteRole = () => {
     </ElDialog>
 
     <ElDialog v-model="isPreview">
-      <MessageItem :msg="prevMsg" :readOnly="true" />
+      <MessageItem :msg="prevMsg" :readOnly="true" :shouldShowAvatar="true" />
     </ElDialog>
 
     <RoleInfoForm :roleId="roleId" :defaultAvatar="defaultAvatar" />

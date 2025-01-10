@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElButton } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { useUserStore, useGroupStore, useRoleStore } from '@/stores'
+import { useUserStore, useGroupStore, useRoleStore } from '@/store'
 import { computed } from 'vue'
 
 const router = useRouter()

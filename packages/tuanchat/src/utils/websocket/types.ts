@@ -1,4 +1,4 @@
-import type { MsgEnumToBody } from '@/stores/types'
+import type { MsgEnumToBody } from '@/store/types'
 import { MsgEnum, WsReqEnum } from '@/enums'
 
 export type WsReqType = {

@@ -2,7 +2,7 @@
 import router from '../router'
 
 import { reactive, ref } from 'vue'
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '../store/character/user/user'
 import { ElButton, ElForm, ElFormItem, ElInput } from 'element-plus'
 
 import type { FormInstance } from 'element-plus'

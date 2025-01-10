@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ElAvatar, ElButton, ElText } from 'element-plus'
 import { MsgEnum } from '@/enums'
-import { useRoleStore } from '@/stores/role'
-import { useRoomStore } from '@/stores'
-import type { TextBody } from '@/stores/types'
+import { useRoleStore } from '@/store/character/role/role'
+import { useRoomStore } from '@/store'
+import type { TextBody } from '@/store/types'
 import type { Message } from '@/services'
 import { computed } from 'vue'
-import { useRoleColorStore } from '@/stores/roleColor'
+import { useRoleColorStore } from '@/store/character/role/roleColor'
 
 const props = defineProps<{
   msg: Message

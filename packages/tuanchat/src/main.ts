@@ -4,8 +4,8 @@ import 'element-plus/dist/index.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import pinia from './stores'
-import { useRoleColorStore } from '@/stores/roleColor'
+import pinia from './store'
+import { useRoleColorStore } from '@/store/character/role/roleColor'
 
 const app = createApp(App)
 

@@ -4,7 +4,7 @@ import { Message, More, List, Avatar } from '@element-plus/icons-vue'
 import ChatItem from './ChatItem.vue'
 import GroupItem from './GroupItem.vue'
 import RoleItem from './RoleItem.vue'
-import { useUserStore, useGroupStore, useRoleStore } from '@/stores'
+import { useUserStore, useGroupStore, useRoleStore } from '@/store'
 import router from '@/router'
 
 const userStore = useUserStore()

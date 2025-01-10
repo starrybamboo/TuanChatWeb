@@ -10,7 +10,7 @@ import {
   ElText
 } from 'element-plus'
 import { RouterLink } from 'vue-router'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/store/user'
 
 const userStore = useUserStore()
 </script>

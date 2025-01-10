@@ -1,5 +1,5 @@
-import pinia from '@/stores'
-import { useRoomStore, useRoleStore } from '@/stores'
+import pinia from '@/store'
+import { useRoomStore, useRoleStore } from '@/store'
 import { chineseToPropertyMap } from '@/enums'
 
 function getRandomNum(min: number, max: number): number {

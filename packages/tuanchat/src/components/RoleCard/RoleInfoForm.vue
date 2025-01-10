@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { propertyToChineseMap } from '@/enums'
 import { tuanApis } from '@/services'
-import { useRoleStore } from '@/stores'
+import { useRoleStore } from '@/store'
 import { computed, ref, watch } from 'vue'
 import { ElButton, ElForm, ElFormItem, ElInput, ElInputNumber, ElTag, ElText } from 'element-plus'
 import type { RoleAbilityTable } from '@/services'

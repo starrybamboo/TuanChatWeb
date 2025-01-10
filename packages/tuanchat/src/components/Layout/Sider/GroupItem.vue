@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ElMenuItemGroup, ElMenuItem, ElAvatar } from 'element-plus'
 import { computed } from 'vue'
-import { useGroupStore } from '@/stores'
-import type { GroupInfoType } from '@/stores/types'
+import { useGroupStore } from '@/store'
+import type { GroupInfoType } from '@/store/types'
 import router from '@/router'
 
 const props = defineProps<{
