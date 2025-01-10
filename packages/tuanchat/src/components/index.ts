@@ -1,6 +1,6 @@
 import MemberList from './ChatBox/MemberList.vue'
 import MessageList from './ChatBox/MessageList.vue'
-import MessageItem from './ChatBox/MessageItem.vue'
+import MessageItem from './Message.vue'
 import InputBox from './ChatBox/InputBox.vue'
 
 import PrimaryHeader from './Layout/Header/PrimaryHeader.vue'

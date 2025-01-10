@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ElScrollbar } from 'element-plus'
-import MessageItem from './MessageItem.vue'
+import MessageItem from '../Message.vue'
 import { ref, nextTick, watch } from 'vue'
 import { useRoomStore, useMsgStore } from '@/store'
 import type { Message } from '@/services/tuanchat/apis'

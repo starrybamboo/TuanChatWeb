@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { tuanApis } from '@/services'
 import type { RoomGroup, UserRole } from '@/services'
 import { Renderer } from '@/utils/renderer'
-import { useRoleStore } from '../../character/role/role'
+import { useRoleStore } from '@/store'
 
 export const useGroupStore = defineStore('group', () => {
   const roleStore = useRoleStore();

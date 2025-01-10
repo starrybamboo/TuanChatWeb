@@ -25,6 +25,6 @@ import { PrimarySider, PrimaryHeader } from '../components'
 
 .main-layout .el-main {
   padding: 0;
-  background-color: #cacacc;
+  background-color: #ffffff;
 }
 </style>

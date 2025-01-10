@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { useMsgStore } from './message'
-import { useGroupStore } from './chat/room/group'
-import { useRoleStore } from './role/role'
+import { useMsgStore } from '@/store'
+import { useGroupStore } from '@/store'
+import { useRoleStore } from '@/store'
 import type { Message, UserRole, RoomGroup } from '@/services'
 import { Renderer } from '@/utils/renderer'
 

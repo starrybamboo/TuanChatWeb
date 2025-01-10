@@ -8,7 +8,7 @@ import { parseInstruction } from '@/utils/parser'
 import wsIns from '@/utils/websocket/websocket'
 
 // 这是一次请求获取的消息数量
-const pageSize = 10
+const pageSize = 30
 
 export const useMsgStore = defineStore('chat', () => {
   // 一个本地的消息缓存存储

@@ -27,8 +27,8 @@ const prevUrl = `${import.meta.env.VITE_TERRE_URL}/games/${gameName}`
 <template>
   <ElContainer>
     <ElMain>
-      <MessageList :msgs="roomStore.messages" />
-      <InputBox />
+      <MessageList :msgs="roomStore.messages" class="message-list" />
+      <InputBox class="input-box" />
     </ElMain>
     <ElAside class="sider">
       <iframe class="game-preview" :src="prevUrl" frameborder="0"></iframe>
@@ -72,5 +72,18 @@ const prevUrl = `${import.meta.env.VITE_TERRE_URL}/games/${gameName}`
   width: 32%;
   height: 100%;
   border-left: 2px solid #4072e7;
+}
+
+.input-box {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 120px;
+}
+
+.message-list{
+  position:relative;
+  /* height: 80%; */
+  bottom: 0px;
 }
 </style>

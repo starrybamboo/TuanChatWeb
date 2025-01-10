@@ -8,11 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ChatItem: typeof import('./src/components/Layout/Sider/ChatItem.vue')['default']
+    ElInput: typeof import('element-plus/es')['ElInput']
     GroupItem: typeof import('./src/components/Layout/Sider/GroupItem.vue')['default']
     InputBox: typeof import('./src/components/ChatBox/InputBox.vue')['default']
     MemberItem: typeof import('./src/components/ChatBox/MemberItem.vue')['default']
     MemberList: typeof import('./src/components/ChatBox/MemberList.vue')['default']
-    MessageItem: typeof import('./src/components/ChatBox/MessageItem.vue')['default']
+    Message: typeof import('./src/components/Message.vue')['default']
     MessageList: typeof import('./src/components/ChatBox/MessageList.vue')['default']
     PrimaryHeader: typeof import('./src/components/Layout/Header/PrimaryHeader.vue')['default']
     PrimarySider: typeof import('./src/components/Layout/Sider/PrimarySider.vue')['default']
