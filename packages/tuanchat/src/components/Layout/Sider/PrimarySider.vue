@@ -12,7 +12,6 @@ import RoomList from './RoomList.vue'
         <ElMenuItem index="1">
           <ElIcon><Coordinate /></ElIcon><RouterLink to="/">Home</RouterLink>
         </ElMenuItem>
-
         <RoomList />
       </ElMenu>
     </ElScrollbar>

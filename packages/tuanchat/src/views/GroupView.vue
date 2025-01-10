@@ -8,15 +8,15 @@ import { useRoute } from 'vue-router'
 const roomStore = useRoomStore()
 const route = useRoute()
 
-onMounted(() => {
-  roomStore.switchRoom(Number(route.params.id))
+onMounted(async () => {
+  await roomStore.switchRoom(Number(route.params.id))
 })
 
-// TODO: 切换房间有点bug
+// Watch for route changes
 watch(
   () => route.params.id,
-  (newId) => {
-    roomStore.switchRoom(Number(newId))
+  async (newId) => {
+    await roomStore.switchRoom(Number(newId))
   }
 )
 

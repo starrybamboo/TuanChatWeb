@@ -20,8 +20,7 @@ const msgType: MsgEnum = props.msg.messageType!
 const role = computed(() => roleStore.userRoleList.get(props.msg.roleId!)!)
 const renderer = roomStore.renderer!
 const roleColorStore = useRoleColorStore()
-const textColor = computed(() => role.value ? roleColorStore.getColorForRole(String(role.value.roleId!)) : '#FFFFFF')
-
+const textColor = computed(() => role.value ? roleColorStore.getColorForRole(role.value.roleId!) : '#FFFFFF')
 
 // 这个是跟 webgal 联动的地方。
 const handleAddToRenderer = async () => {
@@ -43,13 +42,12 @@ const handleAddToRenderer = async () => {
 <template>
   <div class="vn-message-box">
     <!-- 旁白文本 -->
-    <div v-if="!role" class="narration">
+    <div v-if="msg.messageType == MsgEnum.UNKNOWN" class="narration">
       {{ (msg.body as TextBody).content }}
     </div>
     
     <!-- 对话文本 -->
     <div v-else class="dialog-container" :class="{ 'merged': !shouldShowAvatar }">
-      
       <div v-if="shouldShowAvatar" class="avatar-container">
         <ElAvatar
           :size="80"

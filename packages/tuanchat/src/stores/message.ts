@@ -7,14 +7,20 @@ import { parseInstruction } from '@/utils/parser'
 
 import wsIns from '@/utils/websocket/websocket'
 
+// 这是一次请求获取的消息数量
 const pageSize = 10
 
 export const useMsgStore = defineStore('chat', () => {
+  // 一个本地的消息缓存存储
   const messagesList = ref<Map<number, Message[]>>(new Map<number, Message[]>())
+  // 每个群的游标的位置
   const cursorMap = new Map<number, string>()
+  // 是否加载完所有历史消息: roomId -> boolean
   const isLoaded = new Map<number, boolean>()
+  // 引入websocket
   const ws = wsIns
 
+  // 添加新消息到列表
   function pushMsg(msg: Message) {
     const roomId = msg.roomId!
     if (messagesList.value.has(roomId)) {
@@ -26,9 +32,11 @@ export const useMsgStore = defineStore('chat', () => {
     }
   }
 
+  // 获取历史消息
   async function fetchMsg(roomId: number, size: number = pageSize) {
-    if (isLoaded.get(roomId)) {
-      return
+    if (isLoaded.get(roomId)) { 
+      alert("没有更多消息了")
+      return 
     }
 
     const data = (
@@ -44,7 +52,9 @@ export const useMsgStore = defineStore('chat', () => {
     if (data.isLast) {
       isLoaded.set(roomId, true)
     }
+
     const msgs = data.list!.map((msg) => msg.message).filter((item) => item !== undefined)
+
     if (msgs.length > 0) {
       cursorMap.set(roomId, data.cursor!)
       if (messagesList.value.has(roomId)) {
@@ -55,9 +65,11 @@ export const useMsgStore = defineStore('chat', () => {
     } else {
       messagesList.value.set(roomId, [])
     }
+
     cursorMap.set(roomId, data.cursor!)
   }
 
+  // 通过websocket 发送新消息
   function sendMsg(msg: string, roomId: number, roleId: number, avatarId: number) {
     const parsedMsg = parseInstruction(msg)
     const wsReq: WsReqType = {

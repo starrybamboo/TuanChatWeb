@@ -9,12 +9,15 @@ import wsIns from '@/utils/websocket/websocket'
 
 // TODO: cookies
 export const useUserStore = defineStore('user', () => {
+  // 是否已登录
   const isSign = ref(false)
-  const userInfo = ref<UserInfoType>({ userId: 0, username: '', avatar: '', roleIds: [] })
+  // 用户信息
+  const userInfo = ref<UserInfoType>({ userId: 0, username: '', avatar: '', roleIds: [] })      
   const groupStore = useGroupStore()
   const roleStore = useRoleStore()
   const token = ref('')
 
+  // 用户登录
   async function login(uid: string) {
     const data = (await tuanApis.login({ userId: uid, password: '123456' })).data.data
     if (data === undefined) {
@@ -27,6 +30,7 @@ export const useUserStore = defineStore('user', () => {
     await getUserInfo(uid)
   }
 
+  // 用户登出
   function logout() {
     isSign.value = false
     userInfo.value.userId = 0
@@ -37,8 +41,10 @@ export const useUserStore = defineStore('user', () => {
     groupStore.groupList.clear()
   }
 
+  // 获取用户信息
   async function getUserInfo(uid: string) {
     const data = (await tuanApis.getUserInfo({ userId: Number(uid) })).data.data
+
     if (data === undefined) {
       logout()
       throw new Error('Group list not found')

@@ -100,8 +100,10 @@ const onBeforeUpload = async (rawFile: UploadRawFile) => {
     spriteUrl: data.downloadUrl!
   })
 
+  // 收到用户的消息
   await roleStore.fetchRoleAvatars(role?.roleId!).then(() => {
     fileList.value = []
+    
     roleStore.roleToImages.get(role?.roleId!)?.forEach((avatarId: number) => {
       const urls = roleStore.imageUrls.get(avatarId)
       fileList.value.push({

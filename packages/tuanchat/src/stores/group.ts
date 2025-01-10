@@ -5,17 +5,24 @@ import type { RoomGroup, UserRole } from '@/services'
 import { Renderer } from '@/utils/renderer'
 
 export const useGroupStore = defineStore('group', () => {
-  const groupList = ref<Map<number, RoomGroup>>(new Map<number, RoomGroup>())
+
+  // 群组列表: groupId -> 群组信息
+  const groupList = ref<Map<number, RoomGroup>>(new Map())
+  // 子群组映射: parentGroupId -> [childGroupIds]
   const subGroupMap = ref(new Map<number, number[]>())
+  // 群组角色列表: groupId -> [角色列表]
   const groupRoleList = ref(new Map<number, UserRole[]>())
+  // 渲染器实例映射: roomId -> Renderer
   const renderers = new Map<number, Renderer>()
 
+  // 创建群组的渲染器实例
   async function createRenderer(roomId: number) {
     const renderer = new Renderer(roomId)
     await renderer.initRender()
     renderers.set(roomId, renderer)
   }
 
+  // 获取用户的群组列表
   async function getGroupList() {
     const data = (await tuanApis.getUserGroups()).data.data
     if (data === undefined) {
@@ -24,6 +31,7 @@ export const useGroupStore = defineStore('group', () => {
     initGroupMap(data)
   }
 
+  // 初始化群组层级关系
   function initGroupMap(groupInfolist: RoomGroup[]) {
     if (!groupInfolist || groupInfolist.length === 0) {
       return
@@ -53,6 +61,7 @@ export const useGroupStore = defineStore('group', () => {
     })
   }
 
+  // 获取群组的角色列表
   async function fetchRoles(groupId: number) {
     const data = (await tuanApis.groupRole({ roomId: groupId })).data.data
     if (data === undefined) {

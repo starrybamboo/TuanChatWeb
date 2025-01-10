@@ -4,12 +4,18 @@ import { tuanApis } from '@/services'
 import type { UserRole, RoleAvatar, RoleAbilityTable } from '@/services'
 
 export const useRoleStore = defineStore('role', () => {
+  // role_id -> 角色的具体信息
   const userRoleList = ref(new Map<number, UserRole>())
+  // role_id -> 角色的属性列表
   const roleAbility = ref(new Map<number, RoleAbilityTable>())
+  // role_id -> 相关所属的所有 avatar_id
   const roleToImages = ref(new Map<number, number[]>())
+  // avatar_id -> 相关所有的imageId
   const imageUrls = ref(
     new Map<number, { spriteUrl: string; avatarUrl: string; avatarTitle: string }>()
   )
+  // 一个群里面的相关所有角色
+  // room_id -> role_id 
   const groupToRole = ref(new Map<number, UserRole>())
 
   async function fetchRoleAvatars(roleId: number) {
