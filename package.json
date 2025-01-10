@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "concurrently": "^7.2.2",
-    "iconv-lite": "^0.6.3",
-    "husky": "^9.1.5"
+    "eslint": "^8.57.1",
+    "husky": "^9.1.5",
+    "iconv-lite": "^0.6.3"
   }
 }

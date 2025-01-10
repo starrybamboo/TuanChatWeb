@@ -12,9 +12,17 @@ const innerRef = ref<HTMLDivElement>()
 const scrollbarRef = ref<InstanceType<typeof ElScrollbar>>()
 const isFetching = ref(false)
 
-defineProps<{
+const props = defineProps<{
   msgs: Message[]
 }>()
+
+const shouldShowAvatar = (currentMsg: Message, index: number) => {
+  if (index === 0) return true;
+  const prevMsg = props.msgs[index - 1];
+  
+  return prevMsg.avatarId !== currentMsg.avatarId || 
+         prevMsg.roleId !== currentMsg.roleId;
+}
 
 watch(
   () => [roomStore.messages.length, roomStore.curRoom?.roomId!],
@@ -51,7 +59,13 @@ const onWheel = (e: WheelEvent) => {
 <template>
   <ElScrollbar ref="scrollbarRef" @scroll="onScroll">
     <div class="message-list" ref="innerRef" @wheel="onWheel">
-      <MessageItem v-for="msg in msgs" :key="msg.syncId" :msg="msg" :readOnly="false" />
+      <MessageItem 
+        v-for="(msg, index) in msgs" 
+        :key="msg.syncId" 
+        :msg="msg" 
+        :readOnly="false"
+        :shouldShowAvatar="shouldShowAvatar(msg, index)"
+      />
     </div>
   </ElScrollbar>
 </template>
@@ -61,6 +75,6 @@ const onWheel = (e: WheelEvent) => {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2px;
 }
 </style>
